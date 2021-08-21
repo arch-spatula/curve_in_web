@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.0.0/kute.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        color: white;
+        background: #202731;
+        overflow-x: hidden;
+      }
+      section {
+        /* 꿀팁: 개발자 도구(DevTools)를 활용해서 flexbox의 상태를 확인하고 일일이 외울 필요없게 할 수 있다. */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 400px;
+        padding: 100px 20vw;
+      }
+      /* 유틸 클래스 */
+      .blue {
+        background: #3c31dd;
+      }
+      .red {
+        background: #dd3f31;
+      }
+      .pink {
+        background: #ff0066;
+      }
+      .dark {
+        background: #0f0f10;
+      }
+      /* curve 시작 */
+      .curve {
+        position: absolute;
+        height: 225px;
+        width: 100%;
+        bottom: 0;
+      }
+      .curve::before {
+        content: "";
+        display: block;
+        position: absolute;
+        /* 첫째는 세로 둘째는 가로 */
+        border-radius: 100% 50%;
+        width: 55%;
+        height: 100%;
+        background-color: #202731;
+        transform: translate(85%, 60%);
+      }
+      .curve::after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 100% 50%;
+        width: 55%;
+        height: 100%;
+        background-color: #3c31dd;
+        transform: translate(-4%, 40%);
+        z-index: -1;
+      }
+      .bubble::after {
+        content: "";
+        border-top-left-radius: 50% 100%;
+        border-top-right-radius: 50% 100%;
+        position: absolute;
+        bottom: 0;
+        height: 85%;
+        width: 100%;
+        background: #0f0f10;
+        z-index: -1;
+      }
+
+      .wave {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+      }
+
+      .wave svg {
+        position: relative;
+        display: block;
+        width: calc(168% + 1.3px);
+        height: 226px;
+      }
+
+      .wave .shape-fill {
+        fill: #ffffff;
+      }
+
+      .spacer {
+        aspect-ratio: 960/540;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .layer1 {
+        background-image: url("./layer1.svg");
+      }
+      .flip {
+        transform: rotate(180deg);
+      }
+      .blob-motion {
+        position: absolute;
+        transform: translateY(-20%);
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <!-- section*8>(h1>{Nice Curves})+p>lor -->
+    <section class="blue">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+      <!-- 대부분의 경우 좋지 않은 프로그래밍 방식이다. 비어있는 div는 지양하자. -->
+      <div class="curve"></div>
+    </section>
+    <section class="bubble">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </section>
+    <section class="dark">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </section>
+    <section class="dark">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </section>
+    <section class="blue">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </section>
+    <section class="red">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+      <div class="wave">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+    </section>
+    <section class="dark">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+      <div class="spacer layer1"></div>
+    </section>
+    <div class="spacer layer1 flip"></div>
+    <section class="pink">
+      <h1>Nice Curves</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+      <svg
+        class="blob-motion"
+        id="visual"
+        viewBox="0 0 960 540"
+        width="960"
+        height="540"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+      >
+        <!-- <rect x="0" y="0" width="960" height="540" fill="#FF0066"></rect> -->
+        <g transform="translate(478.06738964876035 264.51936140267065)">
+          <path
+            id="blob1"
+            d="M132.8 -123.1C168.4 -97.1 191.2 -48.6 198.8 7.5C206.3 63.6 198.6 127.3 162.9 149.8C127.3 172.3 63.6 153.6 11.3 142.3C-41 131 -82 127 -121.5 104.5C-161 82 -199 41 -197.5 1.5C-195.9 -37.9 -154.9 -75.9 -115.4 -101.9C-75.9 -127.9 -37.9 -141.9 5.3 -147.3C48.6 -152.6 97.1 -149.1 132.8 -123.1"
+            fill="#BB004B"
+          ></path>
+        </g>
+        <g
+          transform="translate(503.69715820112907 269.87777925020333)"
+          style="visibility: hidden;"
+        >
+          <path
+            id="blob2"
+            d="M132.3 -151.2C154.8 -109.8 144.9 -54.9 138.4 -6.5C132 42 128.9 83.9 106.4 128.7C83.9 173.6 42 221.3 -3.9 225.2C-49.7 229.1 -99.5 189.1 -133 144.3C-166.5 99.5 -183.7 49.7 -190.7 -7C-197.6 -63.6 -194.3 -127.3 -160.8 -168.6C-127.3 -209.9 -63.6 -229 -4.4 -224.6C54.9 -220.3 109.8 -192.5 132.3 -151.2"
+            fill="#BB004B"
+          ></path>
+        </g>
+      </svg>
+      <script>
+        const tween = KUTE.fromTo(
+          "#blob1",
+          { path: "#blob1" },
+          { path: "#blob2" },
+          { repeat: 9999, duration: 3000, yoyo: true }
+        );
+        tween.start();
+      </script>
+    </section>
+
+    <footer></footer>
+  </body>
+</html>
